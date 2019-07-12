@@ -1,18 +1,19 @@
 const offsets = [
-  // { zone: 'PacificTime',  offset: -8 },
-  { zone: 'MountainTime', offset: -6 },
-  // { zone: 'CentralTime',  offset: -6 },
-  // { zone: 'EasternTime',  offset: -4 }
+  { zone: 'Tokyo',  offset: 9 },
+  { zone: 'Denver', offset: -6 },
+  { zone: 'CentralTime',  offset: -5 },
+  { zone: 'EasternTime',  offset: -4 }
   
 ];
 
-
 const getDate = () => { return new Date() };
 
+let date = getDate();
+console.log('UTC hours is: ', date.getUTCHours());
+
+// Rotates A Clock's Hand by updating Css '--rotation';
 const setRotation = (el, rotateRatio) => { 
-  console.log('Target: ', el);
   el.style.setProperty('--rotation', rotateRatio * 360);
-  console.log()
 }
 
 const setAnalogClock = (timeZone, offset) => {
@@ -26,23 +27,20 @@ const setAnalogClock = (timeZone, offset) => {
 
   const secondsRot = date.getSeconds() / 60;
   const minutesRot = (secondsRot + date.getMinutes()) / 60
-  const hoursRot = (minutesRot + date.getHours()) / 12
+  const hoursRot = (minutesRot + Math.abs(date.getUTCHours() + offset)) / 12
   // console.log(`Seconds Ratio: ${secondsRot} \n $minutes: ${minutesRot} \n hours:${hoursRot}`);
   
-  // setRotation(hourHand, hoursRot);
+  setRotation(hourHand, hoursRot);
   setRotation(secHand, secondsRot);
-  // setRotation(minHand, minutesRot);
+  setRotation(minHand, minutesRot);
 }
 
-
-
-const digiSec = document.querySelector(['digi-sec']);
-
+//  Converts Hours From 1-24 to 1-12...
 const notMilitary = (hr) => {
-  
-  if (hr > 12) {
-    let ans = hr -= 12;
-    console.log("TARGET: ", ans);
+  if (hr > 24 ) { 
+    return hr -= 24; 
+  } else if (hr > 12) {
+    return hr -= 12;
   } else if (hr === 0) { 
     return 12;
   }
@@ -50,7 +48,7 @@ const notMilitary = (hr) => {
 }
 
 const displayDigitalClock = (timeZone, offset) => { 
-  const date = new Date();
+  const date = getDate();
   const sec = addZero(date.getSeconds());
   const min = addZero(date.getMinutes());
   const hr = date.getUTCHours();
@@ -60,6 +58,7 @@ const displayDigitalClock = (timeZone, offset) => {
   digital.innerHTML = `${notMilitary(finalHr)} : ${min} : ${sec}`;
 }
 
+// Adds a 0 for the Digital Clock Display Numbers
 const addZero = num => { 
   if (num > 10) {
     return num;
@@ -68,11 +67,10 @@ const addZero = num => {
   }
 }
 
-
-
+// Runs All of the code every 1000ms to update the clocks
 setInterval(() => { 
   offsets.forEach(el => {
-    // displayDigitalClock(el.zone, el.offset);
+    displayDigitalClock(el.zone, el.offset);
     setAnalogClock(el.zone, el.offset);
   })
 }, 1000);
