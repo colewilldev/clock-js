@@ -9,6 +9,7 @@ const offsets = [
 const getDate = () => { return new Date() };
 
 let date = getDate();
+console.log(getDate());
 console.log('UTC hours is: ', date.getUTCHours());
 
 // Rotates A Clock's Hand by updating Css '--rotation';
@@ -36,15 +37,19 @@ const setAnalogClock = (timeZone, offset) => {
 }
 
 //  Converts Hours From 1-24 to 1-12...
-const notMilitary = (hr) => {
-  if (hr > 24) { 
+
+const notMilitary_ampm = (hr) => {
+  let meridien = "";
+  if (hr > 24) {
+    
     console.log('24 change hr in : ', hr);
     let test = hr -= 24;
     console.log('THe Right Hrs? :', test);
+    return [test, "AM"];
   } else if (hr > 12) {
-    return hr -= 12;
+    return [hr -= 12, "PM"];
   } else if (hr === 0) { 
-    return 12;
+    return [12, "AM"];
   }
   return hr;
 }
@@ -55,15 +60,16 @@ const displayDigitalClock = (timeZone, offset) => {
   const min = addZero(date.getMinutes());
   const hr = date.getUTCHours();
   const finalHr = Math.abs(hr + offset);
+  console.log('Target: ',notMilitary_ampm(finalHr)[0], notMilitary_ampm(finalHr)[1]);
   // console.log('FINAL HR: ', finalHr);
   // console.log('math.abs + offset ', Math.abs(finalHr + offset));
   // console.log('not military(hr): ', notMilitary(finalHr));
-  console.log(timeZone);
+  // let merid = finalHr > 12 ? "PM" : "AM"; 
   let string = `[${timeZone}-digital-clock]`;
-  console.log(string);
+  
   const digital = document.querySelector(string);
-  console.log(`TARGET: ${digital}`);
-  digital.innerHTML = `${notMilitary(finalHr)} : ${min} : ${sec}`;
+  
+  digital.innerHTML = `${notMilitary_ampm(finalHr)[0]} : ${min} : ${sec} ${notMilitary_ampm(finalHr)[1]}`;
 }
 
 // Adds a 0 for the Digital Clock Display Numbers
