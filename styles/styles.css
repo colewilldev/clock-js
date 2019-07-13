@@ -15,6 +15,7 @@ body{
 .container{
   margin: 5px;
 }
+/* Draws The Clock Body */
 .clock{
   width:300px;
   height:300px;
@@ -24,7 +25,48 @@ body{
   border:10px solid black;
   position:relative;
 }
-/* Clock Background Styles */
+/* Positions The Numbers on the Face */
+.number1{transform:rotate(30deg);}
+.number2{transform: rotate(60deg);}
+.number3{transform: rotate(90deg);}
+.number4{transform: rotate(120deg);}
+.number5{transform: rotate(150deg);}
+.number6{transform:rotate(180deg);}
+.number7{transform:rotate(210deg);}
+.number8{transform:rotate(240deg);}
+.number9{transform:rotate(270deg);}
+.number10{transform:rotate(300deg);}
+.number11{transform: rotate(330deg);}
+/* Rotates the numbers Back The right Way */
+.number1 p{transform: rotate(-30deg);}
+.number2 p{transform: rotate(-60deg);}
+.number3 p{transform: rotate(-90deg);}
+.number4 p{transform: rotate(-120deg);}
+.number5 p{transform: rotate(-150deg);}
+.number6 p{transform: rotate(-180deg);}
+.number7 p{transform: rotate(-210deg);}
+.number8 p{transform: rotate(-240deg);}
+.number9 p{transform: rotate(-270deg);}
+.number10 p{transform: rotate(-300deg);}
+.number11 p{transform: rotate(-330deg);}
+
+.clock .hand{
+  position:absolute;
+  bottom:50%;
+  left:50%;
+  width: 15px;
+  height: 45%;
+  border-top-right-radius: 10px;
+  border-top-left-radius:10px;
+  /* Translates X-axis by 50% of item's width */
+  transform: translateX(-50%); 
+  transform-origin:bottom;
+  z-index:10;
+  /* Rotation of Hand */
+  --rotation:0;
+  transform: rotate(calc(var(--rotation)*1deg));
+}
+/* Tokyo Clock Styles */
 .Tokyo.clock{
   border:10px solid rgb(245, 95, 95);
 }
@@ -51,15 +93,6 @@ body{
   background-color:white;
   border: 10px solid yellowgreen;
 }
-.Miami .number{
-  font-size:25px;
-  font-family: 'Mountains of Christmas', cursive;
-}
-.Denver .number{
-  color: rgb(2, 26, 85);
-  color: rgb(227, 8, 59);
-  font-family: 'Noto Sans TC', sans-serif;
-}
 .SouthAfrica.clock{
   background: center url('/img/africa-safari-Cover.jpg');
   background-repeat: no-repeat;
@@ -67,6 +100,7 @@ body{
   border:10px solid burlywood;
   color:white;
 }
+/* Styles For The Numbers on The Faces */
 .clock .number{
   position:absolute;
   width:100%;
@@ -74,34 +108,21 @@ body{
   text-align: center;
   padding-top:5px;
 }
-.number1{transform:rotate(30deg);}
-.number2{transform: rotate(60deg);}
-.number3{transform: rotate(90deg);}
-.number4{transform: rotate(120deg);}
-.number5{transform: rotate(150deg);}
-.number6{transform:rotate(180deg);}
-.number7{transform:rotate(210deg);}
-.number8{transform:rotate(240deg);}
-.number9{transform:rotate(270deg);}
-.number10{transform:rotate(300deg);}
-.number11{transform: rotate(330deg);}
-
-.clock .hand{
-  position:absolute;
-  bottom:50%;
-  left:50%;
-  width: 15px;
-  height: 45%;
-  border-top-right-radius: 10px;
-  border-top-left-radius:10px;
-  /* Translates X-axis by 50% of item's width */
-  transform: translateX(-50%); 
-  transform-origin:bottom;
-  z-index:10;
-  /* Rotation of Hand */
-  --rotation:0;
-  transform: rotate(calc(var(--rotation)*1deg));
+.Miami .number .num{
+  font-size:25px;
+  font-family: 'Mountains of Christmas', cursive;
+  padding:0px;
 }
+.Denver .number{
+  color: rgb(2, 26, 85);
+  color: rgb(227, 8, 59);
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.SouthAfrica .number p{
+  font-family: 'Noto Sans TC', sans-serif;
+  margin:0;
+}
+
 /* Circles in the Center of the Clocks */
 .clock::after{
   content:'';

@@ -5,11 +5,8 @@ const offsets = [
   { zone: 'Miami', offset: -4 }
 ];
 
+// Instantiates the date...
 const getDate = () => { return new Date() };
-
-let date = getDate();
-console.log(getDate());
-console.log('UTC hours is: ', date.getUTCHours());
 
 // Rotates A Clock's Hand by updating Css '--rotation' value;
 const setRotation = (el, rotateRatio) => { 
@@ -20,31 +17,28 @@ const setRotation = (el, rotateRatio) => {
 
 const setAnalogClock = (timeZone, offset) => {
   const date = getDate();
-  let hourString = `[${timeZone}-hour-hand]`;
-  let minString = `[${timeZone}-min-hand]`;
-  let secString = `[${timeZone}-sec-hand]`;
+  const hourString = `[${timeZone}-hour-hand]`;
+  const minString = `[${timeZone}-min-hand]`;
+  const secString = `[${timeZone}-sec-hand]`;
   const hourHand = document.querySelector(hourString);
   const minHand  = document.querySelector(minString);
   const secHand  = document.querySelector(secString);
-
+  
+  // Gets 3 Numbers that represent the amount of rotation for sec, min, hours
   const secondsRot = date.getSeconds() / 60;
   const minutesRot = (secondsRot + date.getMinutes()) / 60;
-
-
+  // The Hours have to be offset for each time zone
   const hoursVar = date.getUTCHours() + offset;
-
   // Counts Back from 24 to account for Negative UTC offset values...
   let hours = hoursVar < 0 ? hoursVar + 24 : hoursVar;
-  console.log(timeZone,'hours: ', hours);
-
+  // Gets the rotation number for hours
   const hoursRot =(minutesRot + hours) / 12;
-  // console.log(`Seconds Ratio: ${secondsRot} \n $minutes: ${minutesRot} \n hours:${hoursRot}`);
   setRotation(hourHand, hoursRot);
   setRotation(secHand, secondsRot);
   setRotation(minHand, minutesRot);
 }
 
-//  Converts Hours From 1-24 to 1-12...
+//  Converts Hours From 1-24 to 1-12, for the Digital Clocks
 const notMilitary_ampm = (hr) => {
   console.log("notMilitary_ampm(hr): ", hr);
   let hours = hr;
@@ -61,19 +55,7 @@ const notMilitary_ampm = (hr) => {
   return [hours, "AM"];
 }
 
-const displayDigitalClock = (timeZone, offset) => { 
-  const date = getDate();
-  const sec = addZero(date.getSeconds());
-  const min = addZero(date.getMinutes());
-  const hr = date.getUTCHours();
-  const finalHr = hr + offset;
-
-  let string = `[${timeZone}-digital-clock]`;
-  const digital = document.querySelector(string);
-  digital.innerHTML = `${addZero(notMilitary_ampm(finalHr)[0])} : ${min} : ${sec} ${notMilitary_ampm(finalHr)[1]}`;
-}
-
-// Adds a 0 for the Digital Clock Display Numbers
+// Adds a 0 for the Digital Clock Display Numbers...
 const addZero = num => { 
   if (num > 9) {
     return num;
@@ -81,8 +63,20 @@ const addZero = num => {
     return "0" + num;
   }
 }
+// Updates The Digital Clock Displays
+const displayDigitalClock = (timeZone, offset) => { 
+  const date = getDate();
+  const sec = addZero(date.getSeconds());
+  const min = addZero(date.getMinutes());
+  const hr = date.getUTCHours();
+  const finalHr = hr + offset;
+  
+  let string = `[${timeZone}-digital-clock]`;
+  const digital = document.querySelector(string);
+  digital.innerHTML = `${addZero(notMilitary_ampm(finalHr)[0])} : ${min} : ${sec} ${notMilitary_ampm(finalHr)[1]}`;
+}
 
-// Runs All of the code every 1000ms to update the clocks
+// Loops Through my Array of Clocks and updates all displays every 1000ms
 setInterval(() => { 
   offsets.forEach(el => {
     displayDigitalClock(el.zone, el.offset);
