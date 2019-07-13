@@ -16,15 +16,33 @@ body{
   min-height: 100vh;
   overflow:hidden;
 }
+.container{
+  margin: 5px;
+}
 .clock{
-  width:500px;
-  height:500px;
+  width:300px;
+  height:300px;
   background-color:rgba(255,255,255,.8);
   /* background-image: url('https://previews.123rf.com/images/tigatelu/tigatelu1404/tigatelu140400068/27649522-tropical-island-cartoon.jpg'); */
   background-size: 150px;
   border-radius:50%;
-  /* border:2px solid black; */
+  border:10px solid black;
   position:relative;
+}
+
+.Tokyo.clock{
+  background-color:greenyellow;
+}
+.Denver.clock{
+  background: center url('https://www.outtherecolorado.com/wp-content/uploads/2017/02/Denver-OutThere-Colorado.jpg');
+  background-repeat: no-repeat;
+  background-size: 300px 300px;
+}
+.Miami.clock{
+
+}
+.SouthAfrica.clock{
+
 }
 .clock .number{
   /*  */
@@ -92,24 +110,61 @@ body{
   left:25%;
   transform: translateX(-50%) translateY(-50%);
 } */
+#miami_center{
+  position:absolute;
+  background: url('/img/trans-flam-body.png');
+  background-size:100px 100px;
+  height:100px;
+  width:100px;
+  top:35%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .clock .hand.second{
   width:5px;
   height:45%;
   background-color:red;
 }
+
 .clock .hand.minute{
   width:5px;
   height:45%;
-  background-color:yellowgreen;
+  
+}
+.Miami.clock .hand.minute{
+  position:absolute;
+  top:50%;
+  width:35px;
+  transform: translateY(-50%);
+
+  z-index:25;
+  
+  
+}
+.Miami.clock .hand img{
+  position:absolute;
+  width:35px;
+  top:50%;
+  left:50%;
+  transform: translateX(-50%);
+}
+.Miami.clock .second img{
+  position:absolute;
+  width:35px;
+  top:15%;
+  left:50%;
+  transform: translateX(-50%);
+  
 }
 .clock .hand.hour{
   width:5px;
   height:45%;
   background-color:blue;
 }
-.digital{
-  display:flex;
-  justify-content: center;
+.digital-clock{
+  margin: 5px 0 5px 0;
+  text-align:center;
   font-family: 'Orbitron', sans-serif;
   
 }

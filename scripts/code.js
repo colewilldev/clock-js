@@ -1,7 +1,7 @@
 const offsets = [
-  { zone: 'Tokyo', offset: 9 },
-  { zone: 'Denver', offset: -6 },
-  { zone: 'SouthAfrica', offset: 2 },
+  // { zone: 'Tokyo', offset: 9 },
+  // { zone: 'Denver', offset: -6 },
+  // { zone: 'SouthAfrica', offset: 2 },
   { zone: 'Miami', offset: -4 }
   
 ];
@@ -14,7 +14,9 @@ console.log('UTC hours is: ', date.getUTCHours());
 
 // Rotates A Clock's Hand by updating Css '--rotation';
 const setRotation = (el, rotateRatio) => { 
-  el.style.setProperty('--rotation', rotateRatio * 360);
+  if (el) { 
+    el.style.setProperty('--rotation', rotateRatio * 360);
+  }
 }
 
 const setAnalogClock = (timeZone, offset) => {
@@ -39,19 +41,28 @@ const setAnalogClock = (timeZone, offset) => {
 //  Converts Hours From 1-24 to 1-12...
 
 const notMilitary_ampm = (hr) => {
-  let meridien = "";
-  if (hr > 24) {
+  console.log("notMilitary_ampm(hr): ", hr);
+  let hours = hr;
+  if (hr < 0) { 
+    hours = 24 + hr ;
+  }
+  console.log('!!! ', hours);
+  if (hours > 24) {
     
-    console.log('24 change hr in : ', hr);
-    let test = hr -= 24;
-    console.log('THe Right Hrs? :', test);
-    return [test, "AM"];
-  } else if (hr > 12) {
-    return [hr -= 12, "PM"];
-  } else if (hr === 0) { 
+    console.log('24 change hr in : ', hours);
+    return [hours -= 24, "AM"];
+
+  } else if (hours > 12) {
+    console.log('2nd if');
+    return [hours -= 12, "PM"];
+
+  } else if (hours === 0) { 
+    console.log('hr in miltime = ', hr);
+    console.log('returning', [12, "AM"]);
     return [12, "AM"];
   }
-  return hr;
+  console.log('doesnt match any ifs returning:', hr);
+  return [hours, "AM"];
 }
 
 const displayDigitalClock = (timeZone, offset) => { 
@@ -59,22 +70,22 @@ const displayDigitalClock = (timeZone, offset) => {
   const sec = addZero(date.getSeconds());
   const min = addZero(date.getMinutes());
   const hr = date.getUTCHours();
-  const finalHr = Math.abs(hr + offset);
-  console.log('Target: ',notMilitary_ampm(finalHr)[0], notMilitary_ampm(finalHr)[1]);
+  const finalHr = hr + offset;
+  // console.log('Target: ',notMilitary_ampm(finalHr)[0], notMilitary_ampm(finalHr)[1]);
   // console.log('FINAL HR: ', finalHr);
   // console.log('math.abs + offset ', Math.abs(finalHr + offset));
-  // console.log('not military(hr): ', notMilitary(finalHr));
+  // console.log('not military(hr): ', notMilitary_ampm(finalHr));
   // let merid = finalHr > 12 ? "PM" : "AM"; 
   let string = `[${timeZone}-digital-clock]`;
   
   const digital = document.querySelector(string);
   
-  digital.innerHTML = `${notMilitary_ampm(finalHr)[0]} : ${min} : ${sec} ${notMilitary_ampm(finalHr)[1]}`;
+  digital.innerHTML = `${addZero(notMilitary_ampm(finalHr)[0])} : ${min} : ${sec} ${notMilitary_ampm(finalHr)[1]}`;
 }
 
 // Adds a 0 for the Digital Clock Display Numbers
 const addZero = num => { 
-  if (num > 10) {
+  if (num > 9) {
     return num;
   } else { 
     return "0" + num;
@@ -87,4 +98,4 @@ setInterval(() => {
     displayDigitalClock(el.zone, el.offset);
     setAnalogClock(el.zone, el.offset);
   })
-}, 4000);
+}, 1000);
