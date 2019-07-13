@@ -12,7 +12,7 @@ let date = getDate();
 console.log(getDate());
 console.log('UTC hours is: ', date.getUTCHours());
 
-// Rotates A Clock's Hand by updating Css '--rotation';
+// Rotates A Clock's Hand by updating Css '--rotation' value;
 const setRotation = (el, rotateRatio) => { 
   if (el) { 
     el.style.setProperty('--rotation', rotateRatio * 360);
@@ -31,30 +31,28 @@ const setAnalogClock = (timeZone, offset) => {
   const secondsRot = date.getSeconds() / 60;
   const minutesRot = (secondsRot + date.getMinutes()) / 60;
 
-  console.log(1, timeZone, 'offset: ', offset);
-  console.log(timeZone, 'Target: ', Math.abs(date.getUTCHours() + offset));
+  // console.log(1, timeZone, 'offset: ', offset);
+  // console.log(timeZone, 'Target: ', Math.abs(date.getUTCHours() + offset));
   const hoursVar = date.getUTCHours() + offset;
+
   // Counts Back from 24 to account for Negative UTC offset values...
   let hours = hoursVar < 0 ? hoursVar + 24 : hoursVar;
   console.log(timeZone,'hours: ', hours);
 
   const hoursRot =(minutesRot + hours) / 12;
   // console.log(`Seconds Ratio: ${secondsRot} \n $minutes: ${minutesRot} \n hours:${hoursRot}`);
-  
   setRotation(hourHand, hoursRot);
   setRotation(secHand, secondsRot);
   setRotation(minHand, minutesRot);
 }
 
 //  Converts Hours From 1-24 to 1-12...
-
 const notMilitary_ampm = (hr) => {
   console.log("notMilitary_ampm(hr): ", hr);
   let hours = hr;
   if (hr < 0) { 
     hours = 24 + hr ;
   }
-  console.log('!!! ', hours);
   if (hours > 24) {
     return [hours -= 24, "AM"];
   } else if (hours > 12) {
@@ -71,11 +69,7 @@ const displayDigitalClock = (timeZone, offset) => {
   const min = addZero(date.getMinutes());
   const hr = date.getUTCHours();
   const finalHr = hr + offset;
-  // console.log('Target: ',notMilitary_ampm(finalHr)[0], notMilitary_ampm(finalHr)[1]);
-  // console.log('FINAL HR: ', finalHr);
-  // console.log('math.abs + offset ', Math.abs(finalHr + offset));
-  // console.log('not military(hr): ', notMilitary_ampm(finalHr));
-  // let merid = finalHr > 12 ? "PM" : "AM"; 
+
   let string = `[${timeZone}-digital-clock]`;
   
   const digital = document.querySelector(string);

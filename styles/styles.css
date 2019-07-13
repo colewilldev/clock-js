@@ -31,11 +31,14 @@ body{
 }
 /* Clock Background Styles */
 .Tokyo.clock{
-  background-color:greenyellow;
+  /* background-color:lightcyan; */
   border:10px solid rgb(245, 95, 95);
 }
+.Tokyo.clock img{
+  width:100px;
+}
 .Denver.clock{
-  background: center url('https://www.outtherecolorado.com/wp-content/uploads/2017/02/Denver-OutThere-Colorado.jpg');
+  background: center url('/img/Denver-OutThere-Colorado.jpg');
   background-repeat: no-repeat;
   background-size: 300px 300px;
   border:10px solid rgb(50, 66, 205);
@@ -122,32 +125,28 @@ body{
   left:50%;
   transform: translateX(-50%) translateY(-50%);
 }
-
+/* Clock Hand Styles */
 .clock .hand.second{
   width:5px;
   height:45%;
   background-color:red;
 }
-
 .clock .hand.minute{
   width:5px;
   height:45%;
   
 }
-
 .clock .hand.hour{
   width:5px;
   height:45%;
   background-color:blue;
 }
-
 .Miami.clock .hour img{
   position:absolute;
   width:35px;
   top:15%;
   left:50%;
   transform: translateX(-28%);
-  
 }
 .Miami.clock .minute img{
   position:absolute;
