@@ -84,7 +84,7 @@ body{
   width:100px;
 }
 .Denver.clock{
-  background: center url('/img/Denver-OutThere-Colorado.jpg');
+  background: center url('../img/Denver-OutThere-Colorado.jpg');
   background-repeat: no-repeat;
   background-size: 300px 300px;
   border:10px solid rgb(2, 26, 85);;
@@ -94,7 +94,7 @@ body{
   border: 10px solid yellowgreen;
 }
 .SouthAfrica.clock{
-  background: center url('/img/africa-safari-Cover.jpg');
+  background: center url('../img/africa-safari-Cover.jpg');
   background-repeat: no-repeat;
   background-size: 280px 280px;
   border:10px solid burlywood;
@@ -150,7 +150,7 @@ body{
 /* Body of the Flamingo */
 #miami_center{
   position:absolute;
-  background: url('/img/flam-body.png');
+  background: url('../img/flam-body.png');
   background-size:100px 100px;
   height:100px;
   width:100px;
