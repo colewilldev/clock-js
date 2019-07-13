@@ -3,8 +3,10 @@
 
 
 # **Here are Some Clocks that I made**
+<p align="center">
+  ![](docs/img/clock_example.png)
+</p>
 
-![](docs/img/clock_example.png)
 
 ## https://colewilldev.github.io/clock-js/ ##
 
