@@ -34,7 +34,19 @@ body{
   /* background-color:lightcyan; */
   border:10px solid rgb(245, 95, 95);
 }
-.Tokyo.clock img{
+/* .Tokyo.clock img{
+  width:100px;
+} */
+.Tokyo.clock #top{
+  width:120px;
+}
+.Tokyo.clock #bottom{
+  width:80px;
+}
+.Tokyo.clock #left{
+  width:80px;
+}
+.Tokyo.clock #right{
   width:100px;
 }
 .Denver.clock{
