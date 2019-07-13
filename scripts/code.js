@@ -1,7 +1,7 @@
 const offsets = [
-  // { zone: 'Tokyo', offset: 9 },
-  // { zone: 'Denver', offset: -6 },
-  // { zone: 'SouthAfrica', offset: 2 },
+  { zone: 'Tokyo', offset: 9 },
+  { zone: 'Denver', offset: -6 },
+  { zone: 'SouthAfrica', offset: 2 },
   { zone: 'Miami', offset: -4 }
   
 ];
@@ -29,8 +29,16 @@ const setAnalogClock = (timeZone, offset) => {
   const secHand  = document.querySelector(secString);
 
   const secondsRot = date.getSeconds() / 60;
-  const minutesRot = (secondsRot + date.getMinutes()) / 60
-  const hoursRot = (minutesRot + Math.abs(date.getUTCHours() + offset)) / 12
+  const minutesRot = (secondsRot + date.getMinutes()) / 60;
+
+  console.log(1, timeZone, 'offset: ', offset);
+  console.log(timeZone, 'Target: ', Math.abs(date.getUTCHours() + offset));
+  const hoursVar = date.getUTCHours() + offset;
+  // Counts Back from 24 to account for Negative UTC offset values...
+  let hours = hoursVar < 0 ? hoursVar + 24 : hoursVar;
+  console.log(timeZone,'hours: ', hours);
+
+  const hoursRot =(minutesRot + hours) / 12;
   // console.log(`Seconds Ratio: ${secondsRot} \n $minutes: ${minutesRot} \n hours:${hoursRot}`);
   
   setRotation(hourHand, hoursRot);
@@ -48,20 +56,12 @@ const notMilitary_ampm = (hr) => {
   }
   console.log('!!! ', hours);
   if (hours > 24) {
-    
-    console.log('24 change hr in : ', hours);
     return [hours -= 24, "AM"];
-
   } else if (hours > 12) {
-    console.log('2nd if');
     return [hours -= 12, "PM"];
-
   } else if (hours === 0) { 
-    console.log('hr in miltime = ', hr);
-    console.log('returning', [12, "AM"]);
     return [12, "AM"];
   }
-  console.log('doesnt match any ifs returning:', hr);
   return [hours, "AM"];
 }
 

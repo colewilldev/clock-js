@@ -132,7 +132,7 @@ body{
   height:45%;
   
 }
-.Miami.clock .hand.minute{
+/* .Miami.clock .hand.minute{
   position:absolute;
   top:50%;
   width:35px;
@@ -141,26 +141,36 @@ body{
   z-index:25;
   
   
-}
-.Miami.clock .hand img{
+} */
+/* .Miami.clock .hand img{
   position:absolute;
   width:35px;
   top:50%;
   left:50%;
   transform: translateX(-50%);
-}
-.Miami.clock .second img{
-  position:absolute;
-  width:35px;
-  top:15%;
-  left:50%;
-  transform: translateX(-50%);
-  
-}
+} */
+
 .clock .hand.hour{
   width:5px;
   height:45%;
   background-color:blue;
+}
+
+.Miami.clock .hour img{
+  position:absolute;
+  width:35px;
+  top:15%;
+  left:50%;
+  transform: translateX(-28%);
+  
+}
+.Miami.clock .minute img{
+  position:absolute;
+  width:35px;
+  top:15%;
+  left:50%;
+  transform: translateX(-28%);
+  background-color:none;
 }
 .digital-clock{
   margin: 5px 0 5px 0;
