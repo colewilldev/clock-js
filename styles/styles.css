@@ -41,17 +41,28 @@ body{
   background: center url('/img/Denver-OutThere-Colorado.jpg');
   background-repeat: no-repeat;
   background-size: 300px 300px;
-  border:10px solid rgb(50, 66, 205);
+  border:10px solid rgb(2, 26, 85);;
 }
 .Miami.clock{
-  background-color:#fff;
-  border:10px solid yellowgreen;
+  background-color:white;
+  border: 10px solid yellowgreen;
+}
+.Miami .number{
+  font-size:25px;
+  font-family: 'Mountains of Christmas', cursive;
+}
+.Denver .number{
+  color: rgb(2, 26, 85);
+  
+    color: rgb(227, 8, 59);
+  font-family: 'Noto Sans TC', sans-serif;
 }
 .SouthAfrica.clock{
   background: center url('/img/africa-safari-Cover.jpg');
   background-repeat: no-repeat;
   background-size: 280px 280px;
   border:10px solid burlywood;
+  color:white;
 }
 .clock .number{
   position:absolute;
@@ -91,30 +102,19 @@ body{
   transform: rotate(calc(var(--rotation)*1deg));
 }
 /* Circles in Clock */
-/* .clock::after{
+.clock::after{
   content:'';
   position: absolute;
-  background-color:black;
+  background-color:white;
   border-radius:50%;
-  height:200px;
-  width:200px;
+  height:10px;
+  width:10px;
   z-index:15;
   top:50%;
   left:50%;
   transform: translateX(-50%) translateY(-50%);
-} */
-/* #blue{
-  content:'';
-  position: absolute;
-  background-color:blue;
-  border-radius:50%;
-  height:200px;
-  width:200px;
-  z-index:15;
-  top:75%;
-  left:25%;
-  transform: translateX(-50%) translateY(-50%);
-} */
+}
+
 #miami_center{
   position:absolute;
   background: url('/img/flam-body.png');
@@ -125,23 +125,7 @@ body{
   left:50%;
   transform: translateX(-50%) translateY(-50%);
 }
-/* Clock Hand Styles */
-.clock .hand.second{
-  width:5px;
-  height:45%;
-  /* background-color:red; */
-}
-.clock .hand.minute{
-  width:5px;
-  height:45%;
-  
-}
-.clock .hand.hour{
-  width:5px;
-  height:45%;
-  /* background-color:blue; */
-}
-/* Tokyo Clock Hands */
+/* SA Clock Hands */
 .SouthAfrica.clock .hand.hour{
   width:4px;
   height:45%;
@@ -183,7 +167,7 @@ body{
 .Denver.clock .hand.minute{
   width:5px;
   height:45%;
-  background-color: gold;
+  background-color:rgb(254, 209, 12);
 }
 .Denver.clock .hand.second{
   width:1px;
@@ -206,7 +190,6 @@ body{
   transform: translateX(-28%);
   background-color:none;
 }
-
 /* Digital Display Styles */
 .SouthAfrica.digital-clock div{
   color:burlywood;
@@ -221,7 +204,7 @@ body{
   font-family: 'Orbitron', sans-serif;
 }
 .Denver.digital-clock div{
-  color:rgb(50, 66, 205);
+  color: rgb(2, 26, 85);
   margin: 20px 0 5px 0;
   text-align:center;
   font-family: 'Orbitron', sans-serif;
