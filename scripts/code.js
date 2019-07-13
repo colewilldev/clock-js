@@ -3,7 +3,6 @@ const offsets = [
   { zone: 'Denver', offset: -6 },
   { zone: 'SouthAfrica', offset: 2 },
   { zone: 'Miami', offset: -4 }
-  
 ];
 
 const getDate = () => { return new Date() };
@@ -31,8 +30,7 @@ const setAnalogClock = (timeZone, offset) => {
   const secondsRot = date.getSeconds() / 60;
   const minutesRot = (secondsRot + date.getMinutes()) / 60;
 
-  // console.log(1, timeZone, 'offset: ', offset);
-  // console.log(timeZone, 'Target: ', Math.abs(date.getUTCHours() + offset));
+
   const hoursVar = date.getUTCHours() + offset;
 
   // Counts Back from 24 to account for Negative UTC offset values...
@@ -71,9 +69,7 @@ const displayDigitalClock = (timeZone, offset) => {
   const finalHr = hr + offset;
 
   let string = `[${timeZone}-digital-clock]`;
-  
   const digital = document.querySelector(string);
-  
   digital.innerHTML = `${addZero(notMilitary_ampm(finalHr)[0])} : ${min} : ${sec} ${notMilitary_ampm(finalHr)[1]}`;
 }
 

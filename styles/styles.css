@@ -2,14 +2,9 @@
 
 *, *::after, *::before{
   box-sizing: border-box;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Bitter', serif;
 }
-
 body{
-  /* background: 
-  linear-gradient(rgba(2, 15, 37, 1), 
-  rgb(10, 2, 31));
-  background: black; */
   font-size:20px;
   display:flex;
   justify-content: center;
@@ -31,12 +26,9 @@ body{
 }
 /* Clock Background Styles */
 .Tokyo.clock{
-  /* background-color:lightcyan; */
   border:10px solid rgb(245, 95, 95);
 }
-/* .Tokyo.clock img{
-  width:100px;
-} */
+/* Resize the Sushi Img */
 .Tokyo.clock #top{
   width:120px;
 }
@@ -65,8 +57,7 @@ body{
 }
 .Denver .number{
   color: rgb(2, 26, 85);
-  
-    color: rgb(227, 8, 59);
+  color: rgb(227, 8, 59);
   font-family: 'Noto Sans TC', sans-serif;
 }
 .SouthAfrica.clock{
@@ -101,8 +92,6 @@ body{
   left:50%;
   width: 15px;
   height: 45%;
-  /* background-color:black;
-  border: 1px solid white; */
   border-top-right-radius: 10px;
   border-top-left-radius:10px;
   /* Translates X-axis by 50% of item's width */
@@ -113,11 +102,10 @@ body{
   --rotation:0;
   transform: rotate(calc(var(--rotation)*1deg));
 }
-/* Circles in Clock */
+/* Circles in the Center of the Clocks */
 .clock::after{
   content:'';
   position: absolute;
-  background-color:white;
   border-radius:50%;
   height:10px;
   width:10px;
@@ -126,7 +114,19 @@ body{
   left:50%;
   transform: translateX(-50%) translateY(-50%);
 }
-
+.Tokyo.clock::after{
+  background-color:rgb(245, 95, 95);
+}
+.Denver.clock::after{
+  background-color: rgb(2, 26, 85);
+}
+.SouthAfrica.clock::after{
+  background-color: burlywood;
+}
+.Miami.clock::after{
+  background-color: white;
+}
+/* Body of the Flamingo */
 #miami_center{
   position:absolute;
   background: url('/img/flam-body.png');
@@ -137,55 +137,54 @@ body{
   left:50%;
   transform: translateX(-50%) translateY(-50%);
 }
-/* SA Clock Hands */
-.SouthAfrica.clock .hand.hour{
+/* Clock Hand Styles */
+.clock .hand.hour{
   width:4px;
   height:45%;
-  background-color: red;
-  border:1px solid white;
+}
+.clock .hand.minute{
+  width:3px;
+  height:45%;
+  
+}
+.clock .hand.second{
+  width: 1px;
+  height: 45%;
+}
+
+/* SA Clock Hands */
+.SouthAfrica.clock .hand.hour{
+  background-color: burlywood;
 }
 .SouthAfrica.clock .hand.minute{
-  width:3px;
-  height:45%;
-  background-color: black;
+  background-color: whitesmoke;
 }
 .SouthAfrica.clock .hand.second{
-  width:1px;
-  height:45%;
-  background-color: white;
+  background-color: blue;
 }
+
 /* Tokyo Clock Hands */
 .Tokyo.clock .hand.hour{
-  width:3px;
-  height:45%;
   background-color: red;
 }
 .Tokyo.clock .hand.minute{
-  width:3px;
-  height:45%;
   background-color: black;
 }
 .Tokyo.clock .hand.second{
-  width:1px;
-  height:45%;
   background-color: black;
 }
+
 /* Denver Clock Hands */
 .Denver.clock .hand.hour{
-  width:5px;
-  height:45%;
   background-color: white;
 }
 .Denver.clock .hand.minute{
-  width:5px;
-  height:45%;
   background-color:rgb(254, 209, 12);
 }
 .Denver.clock .hand.second{
-  width:1px;
-  height:45%;
   background-color: black;
 }
+
 /* Miami Clock Hands */
 .Miami.clock .hour img{
   position:absolute;
