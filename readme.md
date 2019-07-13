@@ -4,7 +4,7 @@
 
 # **Here are Some Clocks that I made**
 
-![](docs/img/clock_example.gif)
+![](docs/img/clock_example.png)
 
 ## https://colewilldev.github.io/clock-js/ ##
 
