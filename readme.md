@@ -1,7 +1,5 @@
-# **Here are Some Clocks that I made**
-
-  ![](docs/img/clock_example.png)
-
+# **Here are Some Clocks that I made...**
+![](docs/img/clock_example.png)
 ## https://colewilldev.github.io/clock-js/ ##
 
 This was a really fun project for me, I have always loved the variety of different styles that you see on the faces of watches growing up, as well as seeing a row of clocks at the airport that showcase different timezones across the world.  So I decided to combine both concepts, highly varied styles between each clock as well as 4 different timezones, and a digital diplay for each.
