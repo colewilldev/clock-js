@@ -90,7 +90,10 @@ body{
   border:10px solid rgb(2, 26, 85);;
 }
 .Miami.clock{
-  background-color:white;
+  background: no-repeat url('https://img1.coastalliving.timeinc.net/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/2017/05/main/sunset-over-ocean-green-flash-507111226.jpg?itok=GTOOQMDX');
+ 
+  background-size:400px 400px;
+  background-position:50% 100%;
   border: 10px solid yellowgreen;
 }
 .SouthAfrica.clock{
