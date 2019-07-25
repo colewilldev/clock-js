@@ -6,7 +6,7 @@ This was a really fun project for me, I have always loved the variety of differe
 
 It was a little tricky computing the right time across all 4 clocks given that the getDate() function in JS returns Militarty time (1-24hrs).  So I had to program for that, as well as to be able to pass in a time zone and amount of time offset into both of my clock functions.
 
-The hardest part by far was replacing the Miami clock's hands with the Flamingo legs.  It took way longer than I would have wanted but I had this vision in my mind of a flamingo clock with the legs as the hands, so I'm really happy I took the time to get the css right...
+Really happy about the flamingo clock as I had a vision in my mind that I wanted a cartoon bird with the legs as the hands to tell time.  
 
 Anyways, Hope you enjoy them as much as I do and thanks for stopping by!
 
